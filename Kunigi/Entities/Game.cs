@@ -1,4 +1,6 @@
-﻿namespace Kunigi.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Kunigi.Entities;
 
 public class Game
 {
@@ -6,10 +8,15 @@ public class Game
     
     public short Year { get; set; }
     
+    [Column(TypeName = "varchar(255)")]
     public string Title { get; set; }
+    
+    [Column(TypeName = "varchar(255)")]
+    public string Slug { get; set; }
     
     public string Description { get; set; }
     
+    [Column(TypeName = "varchar(255)")]
     public string ImageUrl { get; set; }
     
     public int HostId { get; set; }

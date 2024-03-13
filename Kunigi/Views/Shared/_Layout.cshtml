@@ -31,12 +31,22 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link @(GetActive("Home", "Index"))" 
-                           asp-area="" asp-controller="Home" asp-action="Index">Αρχική</a>
+                        <a class="nav-link @(GetActive("Home", "Index"))"
+                           asp-area="" asp-controller="Home" asp-action="Index">
+                            Αρχική
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(GetActive("Teams", "List"))" 
-                           asp-area="" asp-controller="Teams" asp-action="List">Ομάδες</a>
+                        <a class="nav-link @(GetActive("Teams", "List"))"
+                           asp-area="" asp-controller="Teams" asp-action="List">
+                            Ομάδες
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(GetActive("Games", "List"))"
+                           asp-area="" asp-controller="Games" asp-action="List">
+                            Παιχνίδια
+                        </a>
                     </li>
                 </ul>
             </div>

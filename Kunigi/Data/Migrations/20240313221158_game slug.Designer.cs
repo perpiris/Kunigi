@@ -2,6 +2,7 @@
 using Kunigi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,34 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kunigi.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240313221158_game slug")]
+    partial class gameslug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
-
-            modelBuilder.Entity("Kunigi.Entities.File", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("FilePath")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FileType")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PuzzleId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PuzzleId");
-
-                    b.ToTable("Files");
-                });
 
             modelBuilder.Entity("Kunigi.Entities.Game", b =>
                 {
@@ -74,23 +55,6 @@ namespace Kunigi.Data.Migrations
                     b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("Kunigi.Entities.Puzzle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Answer")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Question")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Puzzles");
-                });
-
             modelBuilder.Entity("Kunigi.Entities.Team", b =>
                 {
                     b.Property<int>("Id")
@@ -126,17 +90,6 @@ namespace Kunigi.Data.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("Kunigi.Entities.File", b =>
-                {
-                    b.HasOne("Kunigi.Entities.Puzzle", "Puzzle")
-                        .WithMany("Files")
-                        .HasForeignKey("PuzzleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Puzzle");
-                });
-
             modelBuilder.Entity("Kunigi.Entities.Game", b =>
                 {
                     b.HasOne("Kunigi.Entities.Team", "Host")
@@ -154,11 +107,6 @@ namespace Kunigi.Data.Migrations
                     b.Navigation("Host");
 
                     b.Navigation("Winner");
-                });
-
-            modelBuilder.Entity("Kunigi.Entities.Puzzle", b =>
-                {
-                    b.Navigation("Files");
                 });
 
             modelBuilder.Entity("Kunigi.Entities.Team", b =>
