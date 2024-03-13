@@ -1,4 +1,4 @@
-namespace Kunigi.Models;
+namespace Kunigi.ViewModels;
 
 public class ErrorViewModel
 {

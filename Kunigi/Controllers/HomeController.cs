@@ -1,24 +1,12 @@
 using System.Diagnostics;
+using Kunigi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Kunigi.Models;
 
 namespace Kunigi.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ILogger<HomeController> logger) : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
     {
         return View();
     }
