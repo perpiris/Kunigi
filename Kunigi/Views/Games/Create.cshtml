@@ -15,6 +15,12 @@
             <input asp-for="Year" class="form-control @(ViewData.ModelState["Year"] != null ? "is-invalid" : "")" min="1989" max="@DateTime.Now.Year.ToString()" pattern="[0-9]{4}"/>
             <span asp-validation-for="Year" class="text-danger"></span>
         </div>
+        
+        <div class="row form-group mb-3">
+            <label asp-for="Order" class="form-label"></label>
+            <input asp-for="Order" class="form-control @(ViewData.ModelState["Order"] != null ? "is-invalid" : "")" min="1"/>
+            <span asp-validation-for="Order" class="text-danger"></span>
+        </div>
 
         <div class="row form-group mb-3">
             <label asp-for="HostId" class="form-label"></label>

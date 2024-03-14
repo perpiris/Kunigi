@@ -73,6 +73,17 @@ public class GamesController(DataContext context, IMapper mapper, IWebHostEnviro
         {
             ModelState.Remove("Year");
         }
+        
+        exists = itemList.Any(x => x.Order == viewModel.Order);
+        if (exists)
+        {
+            extraErrors = true;
+            ModelState.AddModelError("Order", "Έχει ήδη καταχωρηθεί παιχνίδι για αυτή τη σειρά.");
+        }
+        else
+        {
+            ModelState.Remove("Order");
+        }
 
         if (viewModel.HostId <=0)
         {
@@ -103,6 +114,7 @@ public class GamesController(DataContext context, IMapper mapper, IWebHostEnviro
         context.Games.Add(new Game
         {
             Year = viewModel.Year,
+            Order = viewModel.Order,
             HostId = viewModel.HostId,
             WinnerId = viewModel.WinnerId
         });
@@ -120,7 +132,7 @@ public class GamesController(DataContext context, IMapper mapper, IWebHostEnviro
             return RedirectToAction("List");
         }
 
-        var viewModel = await context.Games.ProjectTo<GameDetailsViewModel>(mapper.ConfigurationProvider).SingleOrDefaultAsync(x => x.Id == id);
+        var viewModel = await context.Games.ProjectTo<GameEditViewModel>(mapper.ConfigurationProvider).SingleOrDefaultAsync(x => x.Id == id);
         if (viewModel != null) return View(viewModel);
         
         return RedirectToAction("List");

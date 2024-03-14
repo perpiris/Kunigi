@@ -9,6 +9,10 @@ public class GameCreateViewModel
     [DisplayName("Έτος διεξαγωγής")]
     [Required(ErrorMessage = "Το πεδίο απαιτείται.")]
     public short Year { get; set; }
+
+    [DisplayName("Σειρά")]
+    [Required(ErrorMessage = "Το πεδίο απαιτείται.")]
+    public short Order { get; set; }
     
     [DisplayName("Διοργανωτής")]
     [Required(ErrorMessage = "Το πεδίο απαιτείται.")]

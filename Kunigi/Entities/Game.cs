@@ -7,6 +7,8 @@ public class Game
     public int Id { get; set; }
     
     public short Year { get; set; }
+
+    public short Order { get; set; }
     
     [Column(TypeName = "varchar(255)")]
     public string Title { get; set; }
